@@ -1,0 +1,5 @@
+numpy
+imageio
+scikit-image
+colour_demosaicing
+matplotlib

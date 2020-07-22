@@ -1,0 +1,10 @@
+Pillow
+tensorflow-gpu==1.14.0
+keras==2.2.4
+tensorflow-probability==0.7.0
+pandas
+sklearn
+scikit-image
+matplotlib
+colour_demosaicing
+seaborn
