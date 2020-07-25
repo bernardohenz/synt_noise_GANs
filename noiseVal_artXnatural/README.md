@@ -13,7 +13,7 @@ For installing the requirements, just run:
 ```
 pip install -r requirements.txt
 ```
-We have fixed the ```Keras``` and  ```Tensorflow``` versions. If you use different versions, you will probably need to adjust the code.
+We have the ```Keras``` and  ```Tensorflow``` versions fixed to the ones we've used. If you use different versions, you will probably need to adjust the code.
 
 
 ## Common Noise Models vs Natural Noise
@@ -29,7 +29,7 @@ We can clearly see how easy it is for discriminating artificial from natural noi
 
 File ```noise_artXrealXGAN_SIDDXnoiseflow.py``` trains a classifier for discriminating the above mentioned methods, besides NoiseFlow and ours.
 
-If you wish to download our trained models (for this experiment), just run the bash:
+If you wish to download our [trained models](https://drive.google.com/file/d/149OEnQCBiMiSFKsjjf3rp7uazdZ9bUAU) (for this experiment), and extract them into ```trained_models```. You can do that by running the following bash:
 ```bash
 bash ./download_trained_models.sh
 ```

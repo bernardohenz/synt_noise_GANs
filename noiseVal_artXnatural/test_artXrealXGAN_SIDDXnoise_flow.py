@@ -6,6 +6,18 @@
 # Misc
 ######################################
 import os
+DESIRED_LOG_LEVEL = '3'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = DESIRED_LOG_LEVEL
+import warnings
+warnings.filterwarnings('ignore',category=FutureWarning)
+
+import tensorflow.compat.v1 as tfv1
+tfv1.logging.set_verbosity({
+    '0': tfv1.logging.DEBUG,
+    '1': tfv1.logging.INFO,
+    '2': tfv1.logging.WARN,
+    '3': tfv1.logging.ERROR
+}.get(DESIRED_LOG_LEVEL))
 
 ######################################
 # Keras

@@ -6,6 +6,18 @@
 # Misc
 ######################################
 import os
+DESIRED_LOG_LEVEL = '3'
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = DESIRED_LOG_LEVEL
+import warnings
+warnings.filterwarnings('ignore',category=FutureWarning)
+
+import tensorflow.compat.v1 as tfv1
+tfv1.logging.set_verbosity({
+    '0': tfv1.logging.DEBUG,
+    '1': tfv1.logging.INFO,
+    '2': tfv1.logging.WARN,
+    '3': tfv1.logging.ERROR
+}.get(DESIRED_LOG_LEVEL))
 
 ######################################
 # Keras
@@ -57,7 +69,7 @@ datagen_val.config['center_crop_size'] = image_size
 datagen_val.set_pipeline([random_transform,center_crop,standardize,compute_fft2])
 flow_val = datagen_val.flow_from_directory(val_dataset_name,batch_size=batch_size,color_mode='rgbfft',target_size=image_size)
 
-filepath="./trained_models/t3i_best_weights.h5"
+filepath="trained_models/t3i_best_weights.h5"
 callback_checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, save_weights=True, mode='max')
 
 # Training CNN

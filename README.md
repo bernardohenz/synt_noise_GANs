@@ -7,7 +7,7 @@ Check the README of each directory for more information about how to run them.
 
 ## Noise Synthesizer
 
-```noiseGAN``` provides the code for synthesizing natural camera noise given the trained model. The code is based on the original [PyTorch implementation of CycleGAN](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix). We provide the models trained with our Canon T3i dataset, and for the SIDD.
+```noiseGAN``` provides the code for synthesizing natural camera noise given the trained model. The code is based on the original [PyTorch implementation of CycleGAN](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/tree/pytorch0.3.1). We provide the models trained with our Canon T3i dataset, and for the SIDD.
 
 ## Validation Models
 

@@ -3,3 +3,4 @@ keras==2.2.4
 scipy
 sklearn
 scikit-image
+tqdm
