@@ -8,13 +8,20 @@ This implementation is based on the [original PyTorch implementation](https://gi
 
 ## Prerequisites
 - Python 3
-- CPU or NVIDIA GPU + CUDA CuDNN
+- NVIDIA GPU + CUDA CuDNN
 
 ## Getting Started
 
 ### Installation
-We used PyTorch 0.3.1 and CUDA 10.0.
-- Install the requirements inside ```requirements.txt```:
+We used PyTorch 0.3.1, please check https://pytorch.org/get-started/previous-versions/ for installation instructions.
+You can try install with the following pip command:
+```
+pip install torch==0.3.1  torchvision==0.2.1
+```
+If the above command fails, you'll need to find the correct whl for installing the pytorch 0.3.1.
+
+
+Also, you must install the requirements inside ```requirements.txt```:
 ```
 pip install -r requirements.txt
 ```
@@ -42,3 +49,22 @@ python generate_noise.py --dataroot_A <input-imgs-dir> --dataroot_B None --name 
 ```
 python generate_noise.py --dataroot_A ./sample_imgs/SIDD_N_S6_clean --dataroot_B None --name sidd_cleanTo3200_S6 --model test --dataset_mode single --no_dropout
 ```
+
+## Running on Docker
+If you are having problems on installing the PyTorch 0.3.1, you can try our Docker.
+First, you will need to install the following requirements:
+* [Docker](https://docs.docker.com/get-docker/)
+* [Nvidia Docker](https://github.com/NVIDIA/nvidia-docker) for using the GPU
+
+Them, you can build the Docker image (this may be take a while) by using:
+```
+docker build -t noiseGAN -f Dockerfile .
+```
+
+You can run the script for generating noise by:
+```
+docker run --gpus all --rm noise-gan python3 generate_noise.py --dataroot_A ./sample_imgs/SIDD_N_S6_clean --dataroot_B None --name sidd_cleanTo3200_S6 --model test --dataset_mode single --no_dropout
+```
+PS: Some warnings might come due to visdom visualization, but the test code will run just fine.
+
+PS2: for any changes in the directories and/or code, you should rebuild the Docker image (which will be much faster due to cached files).
