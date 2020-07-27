@@ -58,7 +58,7 @@ First, you will need to install the following requirements:
 
 Them, you can build the Docker image (this may be take a while) by using:
 ```
-docker build -t noiseGAN -f Dockerfile .
+docker build -t noise-gan -f Dockerfile .
 ```
 
 You can run the script for generating noise by:
