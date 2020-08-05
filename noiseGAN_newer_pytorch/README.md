@@ -43,7 +43,7 @@ bash ./download_trained_models.sh
 
 This model can be tested by:
 ```
-python generate_noise.py --dataroot_A ./sample_imgs/SIDD_N_S6_clean --dataroot_B None --name sidd_cleanTo1600_S6 --model test --dataset_mode single --no_dropout --crop_size 256
+python generate_noise.py --dataroot_A ./sample_imgs/SIDD_N_S6_clean --dataroot_B None --name SIDD_cleanTo3200_S6_new_pytorch --model test --dataset_mode single --no_dropout --crop_size 256
 ```
 
 **Disclaimer:** The trained models provided for this implementation are not the same used for the manuscript reports. Please check the implementation using PyTorch 0.3.1 if you wish to replicate our results.
