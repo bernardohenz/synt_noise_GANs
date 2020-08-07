@@ -38,9 +38,8 @@ class TrainOptions(BaseOptions):
 
         ## NoiseGAN parameters
         parser.add_argument('--lambda_low_freq', type=float, default=10.0, help='weight for low-frequency loss')
-        parser.add_argument('--not_lowfreq_loss',action='store_true',help='do not use low frequency loss')
         parser.add_argument('--lambda_std', type=float, default=10.0, help='weight for var loss')
         parser.add_argument('--low_pass_std', type=float, default=2.5, help='standard deviation of the gaussian blur used for computing the low-frequency content')
-        parser.add_argument('--compare_noisy_versions',default='std_high',help='how training will compare noisy versions: ssim|std')
+        parser.add_argument('--compare_noisy_versions',default='std_high',help='how training will compare noisy versions: std|std_high')
         self.isTrain = True
         return parser
