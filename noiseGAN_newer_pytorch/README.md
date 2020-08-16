@@ -36,7 +36,7 @@ For checking the parameters, please check the files in ```options``` folder.
 
 
 ### Testing our models
-- Our trained models were trained in PyTorch 0.3.1. For newer versions, we are retraining the models. We provide one [trained model](https://drive.google.com/file/d/1x_ONMjQEGxKU-F1zfbv1qluhYyOLa0z4/). Please download and extract it to checkpoints, or run the following batch:
+- Our trained models were trained in PyTorch 0.3.1. For newer versions, we are retraining the models. We provide one [trained model](https://drive.google.com/file/d/1INIqDRjVP1n0fvz8T8F55IvGc1znXv_G/). Please download and extract it to checkpoints, or run the following batch:
 ```bash
 bash ./download_trained_models.sh
 ```
