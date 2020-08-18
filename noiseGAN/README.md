@@ -6,6 +6,8 @@ We provide a PyTorch implementations for paper entitled "Synthesizing Camera Noi
 
 This implementation is based on the [original PyTorch implementation](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/tree/pytorch0.3.1) of the CycleGAN. We used an old branch of this repository. For more information, check below.
 
+If you wish to run our code with a newer PyTorch version (>0.3.1), please check [this implementation](../noiseGAN_newer_pytorch).
+
 ## Prerequisites
 - Python 3
 - NVIDIA GPU + CUDA CuDNN

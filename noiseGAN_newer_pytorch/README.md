@@ -6,6 +6,9 @@ We provide this implementation adapted to a newer PyTorch version.
 
 This code is based on the [original CycleGAN implementation](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/).
 
+
+**Disclaimer:** *The trained models provided for this implementation are not the same used for the manuscript reports. Please check the [implementation using PyTorch 0.3.1](../noiseGAN) if you wish to replicate our results.*
+
 ## Prerequisites
 - Python 3
 - NVIDIA GPU + CUDA CuDNN
@@ -36,14 +39,14 @@ For checking the parameters, please check the files in ```options``` folder.
 
 
 ### Testing our models
-- Our trained models were trained in PyTorch 0.3.1. For newer versions, we are retraining the models. We provide one [trained model](https://drive.google.com/file/d/1INIqDRjVP1n0fvz8T8F55IvGc1znXv_G/). Please download and extract it to checkpoints, or run the following batch:
+- The models used in the manuscript reports were trained in PyTorch 0.3.1, for replicating the results, please check [this directory](../noiseGAN).
+
+- We couldn't load the checkpoints from PyTorch 0.3.1 into newer version, thus, we have trained new models (following the same training strategy. If you wish, you can download these [trained models](https://drive.google.com/file/d/1INIqDRjVP1n0fvz8T8F55IvGc1znXv_G/) and extract them to checkpoints; or run the following batch:
 ```bash
 bash ./download_trained_models.sh
 ```
 
-This model can be tested by:
+The following code take one of the trained models for generating noise for some sample images:
 ```
 python generate_noise.py --dataroot_A ./sample_imgs/SIDD_N_S6_clean --dataroot_B None --name SIDD_cleanTo3200_S6_new_pytorch --model test --dataset_mode single --no_dropout --crop_size 256
 ```
-
-**Disclaimer:** The trained models provided for this implementation are not the same used for the manuscript reports. Please check the implementation using PyTorch 0.3.1 if you wish to replicate our results.
