@@ -6,6 +6,7 @@
 # Misc
 ######################################
 import os
+import argparse
 DESIRED_LOG_LEVEL = '3'
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = DESIRED_LOG_LEVEL
 import warnings
@@ -60,15 +61,19 @@ from model_creation import create_model
 # Change according to your needs
 ######################################
 
-SELECTED_ISO = 800
+parser = argparse.ArgumentParser(description='Test of artificial vs real vs GAN noise.')
+parser.add_argument('--test_dir', type=str, default='sample_imgs',
+                help='Folder containing image patches corrupted by clean, noisy and GAN noise.')
+parser.add_argument('--selected_iso', type=int, default=800,
+                help='Value of VAD aggressiveness (must be 0-3)')        
+args = parser.parse_args()
 
-test_clean_dir = '<path-to-SIDD-patches>/SIDD_{0:04d}/<clean-train>'.format(SELECTED_ISO)
-test_noisy_dir = '<path-to-SIDD-patches>/SIDD_{0:04d}/<noisy-train>'.format(SELECTED_ISO)
-test_GAN_dir = '<path-to-SIDD-patches>/SIDD_{0:04d}/<gan-train>'.format(SELECTED_ISO)
 
-test_clean_dir = 'sample_imgs/SIDD_{0:04d}/clean'.format(SELECTED_ISO)
-test_noisy_dir = 'sample_imgs/SIDD_{0:04d}/noisy'.format(SELECTED_ISO)
-test_GAN_dir = 'sample_imgs/SIDD_{0:04d}/GAN'.format(SELECTED_ISO)
+SELECTED_ISO = args.selected_iso
+
+test_clean_dir = os.path.join(args.test_dir,'SIDD_{0:04d}/clean'.format(SELECTED_ISO))
+test_noisy_dir =  os.path.join(args.test_dir,'SIDD_{0:04d}/noisy'.format(SELECTED_ISO))
+test_GAN_dir =  os.path.join(args.test_dir,'SIDD_{0:04d}/GAN'.format(SELECTED_ISO))
 
 
 # Data specific constants
@@ -129,6 +134,9 @@ scatter(x_proj[:nb_points],y_true[:nb_points],labels=classes,chosen_palette='mut
 plt.savefig('{}_SIDD_w_legend_palette_muted.pdf'.format(SELECTED_ISO))
 scatter(x_proj[:nb_points],y_true[:nb_points],labels=classes,legend=False,chosen_palette='muted')
 plt.savefig('{}_SIDD_no_legend_palette_muted.pdf'.format(SELECTED_ISO))
+
+
+
 
 
 

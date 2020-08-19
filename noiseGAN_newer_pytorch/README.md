@@ -7,7 +7,7 @@ We provide this implementation adapted to a newer PyTorch version.
 This code is based on the [original CycleGAN implementation](https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix/).
 
 
-**Disclaimer:** *The trained models provided for this implementation are not the same used for the manuscript reports. Please check the [implementation using PyTorch 0.3.1](../noiseGAN) if you wish to replicate our results.*
+**Disclaimer:** *The trained models provided for this implementation are not the same used for the manuscript reports. This was done because the models trained in PyTorch 0.3.1 could not be loaded in newer version (PyTorch version > 0.4). Please check the [implementation using PyTorch 0.3.1](../noiseGAN) if you wish to replicate our results.*
 
 ## Prerequisites
 - Python 3
@@ -46,7 +46,7 @@ For checking the parameters, please check the files in ```options``` folder.
 bash ./download_trained_models.sh
 ```
 
-The following code take one of the trained models for generating noise for some sample images:
+The following code takes one of the trained models for generating noise for the sample images:
 ```
 python generate_noise.py --dataroot_A ./sample_imgs/SIDD_N_S6_clean --dataroot_B None --name SIDD_cleanTo3200_S6_new_pytorch --model test --dataset_mode single --no_dropout --crop_size 256
 ```

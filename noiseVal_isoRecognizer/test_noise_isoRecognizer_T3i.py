@@ -6,6 +6,7 @@
 # Misc
 ######################################
 import os
+import argparse
 DESIRED_LOG_LEVEL = '3'
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = DESIRED_LOG_LEVEL
 import warnings
@@ -39,14 +40,18 @@ from model_creation import create_model
 # General Run Parameters
 #########################################################
 
+parser = argparse.ArgumentParser(description='Test of artificial vs real vs GAN noise.')
+parser.add_argument('--img_dir', type=str, default='./sample_imgs',
+                help='Folder containing image patches of different ISO values.')
+args = parser.parse_args()
+
 ######################################
 # Change according to your needs
 ######################################
-test_dataset_name = './sample_imgs'
+test_dataset_name = args.img_dir
 
 # Run parameters
 batch_size = 32
-epochs = 10
 
 # Data specific constants
 image_size = 128,128

@@ -1,11 +1,14 @@
 #!/bin/bash
+cd many_sample_imgs/
 
-fileid="1EYkYE3Wlkk79mmDXJL2NEPE4nd_e3qu_"
-filename="data_per_ISO_lighting_camera.zip"
+fileid="17_EErt51NOrOhS15fRID3R9HVM2F6lUH"
+filename="sample_imgs.zip"
 curl -c ./cookie -s -L "https://drive.google.com/uc?export=download&id=${fileid}" > /dev/null
 curl -Lb ./cookie "https://drive.google.com/uc?export=download&confirm=`awk '/download/ {print $NF}' ./cookie`&id=${fileid}" -o ${filename}
 
-unzip data_per_ISO_lighting_camera.zip
+unzip sample_imgs.zip
 
-rm -rf data_per_ISO_lighting_camera.zip
+rm -rf sample_imgs.zip
 rm -rf cookie
+
+cd ..

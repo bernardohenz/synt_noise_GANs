@@ -34,4 +34,9 @@ If you wish to download our [trained models](https://drive.google.com/file/d/149
 bash ./download_trained_models.sh
 ```
 
-By running the ```test_artXrealXGAN_SIDDXnoise_flow```, you can test the trained models in sample images (check ```sample_imgs``` folder).
+By running the ```test_artXrealXGAN_SIDDXnoise_flow```, you can test the trained models in sample images (check ```sample_imgs``` folder):
+```
+python test_artXrealXGAN_SIDDXnoise_flow.py
+```
+
+This will generate a confusion matrix and TSNE projections for the ISO 800.

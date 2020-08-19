@@ -1,6 +1,7 @@
 import numpy as np
 from glob import glob
 import imageio
+import argparse
 import matplotlib.pyplot as plt
 import random
 import os
@@ -31,9 +32,23 @@ font0.set_weight('bold')
 font0.set_size(32)
 
 
+parser = argparse.ArgumentParser(description='Computation of KL and KS metrics.')
+parser.add_argument('--imgs_dir', type=str, default='./sample_imgs_per_ISO_lighting_camera/',
+                    help='Folder containing image patches os SIDD dataset.')
+parser.add_argument('--output_dir', type=str, default=None,
+                    help='Folder for exporting comparing patches (if None, no patches will be exported).')
+          
+args = parser.parse_args()
+
+img_folder = args.imgs_dir
+out_folder = args.output_dir
+
+
+
 datasets = ['L','N']
 isos = [400,800,1600,3200]
 cams = ['G4','GP','IP','N6','S6']
+
 
 # Creating bins for histogram
 num_bins = 50
@@ -63,11 +78,8 @@ gaussian_stds['3200']['N'] = 0.12520
 gaussian_stds['3200']['both_dataset'] = 0.13524
 gaussian_stds['3200']['both_dataset_linear'] = 0.08091
 
-img_folder = './sample_imgs_per_ISO_lighting_camera/'  #contain only sample patches
-#img_folder = '<path-to-data_per_ISO_lighting_camera>' download the zip containing all patches
-out_folder = './exports_per_cam/'
-
-os.makedirs(out_folder, exist_ok=True)
+if (out_folder):
+    os.makedirs(out_folder, exist_ok=True)
 
 export_list = ['0126_006_S6_00400_00200_4400_L_96','0135_006_IP_00400_00400_5500_N_107',
                '0027_001_G4_00800_00350_5500_L_38','0146_007_N6_00400_00400_4400_N_155',
@@ -95,6 +107,7 @@ export_list_smaller = ['0123_006_G4_00400_00160_3200_N_95','0055_003_N6_00800_01
                        '0029_001_IP_00800_01000_5500_N_125','0157_007_GP_01600_01600_5500_N_150',
                        '0014_001_S6_03200_01250_3200_N_89']
 export_list = export_list + export_list2 + export_list_smaller
+
 print("Kl divergence and KS metrics. The lower the better.")
 print('=====================')
 for cur_iso in isos:
@@ -226,7 +239,7 @@ for cur_iso in isos:
 
                 # Export only X% of images
                 should_print = bool([ele for ele in export_list if(ele in img_name)] )
-                if (False): # Replace by if (should_print):    for exporting comparison patches
+                if (should_print and out_folder): # exporting comparison patches
                     cur_dataset_folder = os.path.join(out_folder,dataset)
                     cur_iso_folder = os.path.join(cur_dataset_folder,str(cur_iso))
                     cur_cam_folder = os.path.join(cur_iso_folder,cur_cam)

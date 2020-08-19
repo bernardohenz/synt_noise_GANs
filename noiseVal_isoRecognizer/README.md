@@ -22,9 +22,18 @@ For testing our trained classifier, please download our [trained models](https:/
 ```bash
 bash ./download_trained_models.sh
 ```
-Also, download our set of [sample images] (https://drive.google.com/file/d/17_EErt51NOrOhS15fRID3R9HVM2F6lUH/view?usp=sharing) (~300MB), extracting them into ```sample_imgs``` directory. You can do that by running the following bash:
-```bash
-bash ./download_sample_imgs.sh
+
+By running the ```test_noise_isoRecognizer_T3i.py```, you can test the trained models in sample images (check ```sample_imgs``` folder):
+```
+python test_noise_isoRecognizer_T3i.py
 ```
 
-By running the ```test_noise_isoRecognizer_T3i.py```, you can test the trained models in sample images (check ```sample_imgs``` folder).
+You can download set with [more sample images] (https://drive.google.com/file/d/17_EErt51NOrOhS15fRID3R9HVM2F6lUH/view?usp=sharing) (~300MB), extracting them into ```many_sample_imgs``` directory. You can do that by running the following bash:
+```bash
+bash ./download_more_sample_imgs.sh
+```
+
+For running the test script on these images, you can use the ```img_dir``` parameter:
+```
+python test_noise_isoRecognizer_T3i.py --img_dir ./many_sample_imgs
+```
